@@ -9,37 +9,34 @@
 
 <body>
     <header>
-        <div class="container">
+        <div class="container" id="home">
             <div class="logo">
                 <h1 class="logo-name">singolo<span class="logo-star">*</span></h1>
                 <ul class="nav-list">
-                    <li class="nav-item">home</li>
-                    <li class="nav-item">services</li>
-                    <li class="nav-item">portfolio</li>
-                    <li class="nav-item">about</li>
-                    <li class="nav-item">contact</li>
+                    <li class="nav-item"><a href="#slider" class="nav-item-link nav-item-active">home</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-item-link">services</a></li>
+                    <li class="nav-item"><a href="#portfolio" class="nav-item-link">portfolio</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-item-link">about</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-item-link">contact</a></li>
                 </ul>
             </div>
         </div>
+        <hr class="header-line">
     </header>
-    <hr class="header-line">
 
-    <div class="slider">
+    <div class="slider" id="slider">
         <div class="container">
-            <div class="slider-arrow-prev">
+            <div class="slider-arrow-prev" id="slider-arrow-prev">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16px"
                     height="27px">
                     <image x="0px" y="0px" width="16px" height="27px"
                         xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAbCAMAAABC6v+QAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAzFBMVEXKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUnKRUn///8s0/OlAAAAQnRSTlMAAnvOyGShUIyfiXeFxhJy1Bdz2CPXJFv65yxY/Og1R/Q2QvHzQ9PqS/ePyjFB8jxMXOZd++IlbtnVFnWai2q5sVMmtg3NAAAAAWJLR0RDZ9ANYgAAAAd0SU1FB+QCFxMvIi8Tq9IAAACtSURBVBjTVdHXFoIwDIDhiuLeA0HU4t57b+X9H0pJQlp79/3nFNJWCF4RIxozhbbi/m8llJOB/RQ7DfYzobPoXJ5cQBdL5DK6UiWb6JpFrttgp0F2m+BWmyw9dIfc7YH7g3CAIXg05gknEKbqCDMInsth7mBRexb41aUqkv6z4rK2/ycRYoNlq8puD+Vw5HLC854tLnQjlyuXGxZDjYy3fNfe5REEqb/U8/X+iC/ClSx5CbNV2wAAAABJRU5ErkJggg==" />
                 </svg>
             </div>
-            <div class="iphone-vert">
-                <img src="./assets/imgs/iPhone_Vertical.png" alt="phone-img">
-            </div>
-            <div class="iphone-horiz">
-                <img src="./assets/imgs/iPhone_Horizontal.png" alt="phone-img">
-            </div>
-            <div class="slider-arrow-next">
+
+            <div class="slider-container" id="slider-container"></div>
+
+            <div class="slider-arrow-next" id="slider-arrow-next">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16px"
                     height="27px">
                     <image x="0px" y="0px" width="16px" height="27px"
@@ -47,10 +44,12 @@
                 </svg>
             </div>
         </div>
+
     </div>
+
     <hr class="slider-line">
 
-    <div class="services">
+    <div class="services" id="services">
         <div class="container">
             <h2 class="services-name">Our Services</h2>
             <p class="services-description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis
@@ -169,65 +168,29 @@
             </div>
         </div>
     </div>
-
+    
     <hr class="services-line">
 
-    <div class="portfolio">
+    <div class="portfolio" id="portfolio">
         <div class="container">
             <h2 class="portfolio-name">Portfolio</h2>
             <p class="portfolio-description">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget
                 lacinia odio sem nec elit.</p>
             <ul class="portfolio-nav-list">
-                <li class="portfolio-nav-item">All</li>
+                <li class="portfolio-nav-item portfolio-nav-item-active">All</li>
                 <li class="portfolio-nav-item">Web Design</li>
                 <li class="portfolio-nav-item">Graphic Design</li>
                 <li class="portfolio-nav-item">Artwork</li>
             </ul>
 
-            <ul class="porfolio-list">
-                <li class="portfolio-item">
-                    <img class="portfolio-img" src="./assets/imgs/Image1.png" alt="image 1">
-                </li>
-                <li class="portfolio-item">
-                    <img class="portfolio-img" src="./assets/imgs/Image2.png" alt="image 2">
-                </li>
-                <li class="portfolio-item">
-                    <img class="portfolio-img" src="./assets/imgs/Image3.png" alt="image 3">
-                </li>
-                <li class="portfolio-item">
-                    <img class="portfolio-img" src="./assets/imgs/Image4.png" alt="image 4">
-                </li>
-                <li class="portfolio-item">
-                    <img class="portfolio-img" src="./assets/imgs/Image5.png" alt="image 5">
-                </li>
-                <li class="portfolio-item">
-                    <img class="portfolio-img" src="./assets/imgs/Image6.png" alt="image 6">
-                </li>
-                <li class="portfolio-item">
-                    <img class="portfolio-img" src="./assets/imgs/Image7.png" alt="image 7">
-                </li>
-                <li class="portfolio-item">
-                    <img class="portfolio-img" src="./assets/imgs/Image8.png" alt="image 8">
-                </li>
-                <li class="portfolio-item">
-                    <img class="portfolio-img" src="./assets/imgs/Image9.png" alt="image 9">
-                </li>
-                <li class="portfolio-item">
-                    <img class="portfolio-img" src="./assets/imgs/Image10.png" alt="image 10">
-                </li>
-                <li class="portfolio-item">
-                    <img class="portfolio-img" src="./assets/imgs/Image11.png" alt="image 11">
-                </li>
-                <li class="portfolio-item">
-                    <img class="portfolio-img" src="./assets/imgs/Image12.png" alt="image 12">
-                </li>
+            <ul class="porfolio-list" id="porfolio-list">
             </ul>
         </div>
     </div>
-
+    
     <hr class="portfolio-line">
 
-    <div class="about-us">
+    <div class="about-us" id="about">
         <div class="container">
             <h2 class="about-us-name">About Us</h2>
             <p class="about-us-description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis
@@ -283,10 +246,10 @@
             </ul>
         </div>
     </div>
-
+    
     <hr class="about-us-line">
 
-    <div class="quote">
+    <div class="quote" id="contact">
         <div class="container">
             <h2 class="quote-name">Get a Quote</h2>
             <p class="quote-description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis
@@ -296,13 +259,13 @@
 
             <div class="form-information">
                 <div class="form-div">
-                    <form action="#" method="post">
-                        <input type="text" name="name" id="input-name" placeholder="Name (Required)" pattern="\D [^0-9]"
-                            title="the name must not contain numbers" required>
+                    <form id="form" onsubmit="Validate(); return false">
+                        <input type="text" name="name" id="input-name" placeholder="Name (Required)" pattern="[A-Za-zА-Яа-яЁё]+(\s+[A-Za-zА-Яа-яЁё]+)?"
+                            title="one or two words in cyrillic or latin letters" required>
                         <input type="email" name="email" id="input-email" placeholder="Email (Required)" required>
                         <input type="text" name="subject" id="input-subject" placeholder="Subject">
                         <textarea name="describe" id="describe" cols="30"
-                            rows="10">Describe your project in detail...</textarea>
+                            rows="10" maxlength="500" title="maximum number of characters 500" placeholder="Describe your project in detail..."></textarea>
                         <input type="submit" value="Submit">
                     </form>
                 </div>
@@ -329,7 +292,7 @@
             </div>
         </div>
     </div>
-
+    
     <hr class="quote-line">
 
     <div class="footer">
@@ -346,6 +309,7 @@
         </div>
     </div>
 
+    <script src="script.js"></script>
 </body>
 
 </html>

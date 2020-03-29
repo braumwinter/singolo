@@ -1,10 +1,14 @@
 /* якоря */
-const anchors = document.querySelectorAll('a[href*="#"]');
+const anchors = document.getElementsByClassName('nav-item-link');
+const burgerAnchors = document.getElementsByClassName('burger-item-link');
 
 /* флаги для телефонов */
 let flagBlockV = true;
 let flagBlockH = true;
 let flagBlockС = true;
+
+/* флаг для мобильного меню */
+let flagBurger = true;
 
 /* переход к якорям */
 for (let anchor of anchors) {
@@ -30,7 +34,10 @@ for (let anchor of anchors) {
 
 /* пролистывание страницы */
 window.addEventListener('scroll', function () {
-    if (this.pageYOffset < 600) {
+    let width = document.body.clientWidth;
+
+    if(width > 767) {
+        if (this.pageYOffset < 600) {
         for (let index of anchors) {
             if (index.getAttribute('href').substr(1) == 'slider') {
                 index.className = 'nav-item-link nav-item-active';
@@ -71,7 +78,73 @@ window.addEventListener('scroll', function () {
             }
         }
     }
+    } else {
+        if (this.pageYOffset < 300) {
+            for (let index of burgerAnchors) {
+                if (index.getAttribute('href').substr(1) == 'slider') {
+                    index.className = 'burger-item-link burger-item-active';
+                } else {
+                    index.className = 'burger-item-link';
+                }
+            }
+        } else if (this.pageYOffset < 1300) {
+            for (let index of burgerAnchors) {
+                if (index.getAttribute('href').substr(1) == 'services') {
+                    index.className = 'burger-item-link burger-item-active';
+                } else {
+                    index.className = 'burger-item-link';
+                }
+            }
+        } else if (this.pageYOffset < 2800) {
+            for (let index of burgerAnchors) {
+                if (index.getAttribute('href').substr(1) == 'portfolio') {
+                    index.className = 'burger-item-link burger-item-active';
+                } else {
+                    index.className = 'burger-item-link';
+                }
+            }
+        } else if (this.pageYOffset < 4700) {
+            for (let index of burgerAnchors) {
+                if (index.getAttribute('href').substr(1) == 'about') {
+                    index.className = 'burger-item-link burger-item-active';
+                } else {
+                    index.className = 'burger-item-link';
+                }
+            }
+        } else {
+            for (let index of burgerAnchors) {
+                if (index.getAttribute('href').substr(1) == 'contact') {
+                    index.className = 'burger-item-link burger-item-active';
+                } else {
+                    index.className = 'burger-item-link';
+                }
+            }
+        }
+    }
+    
 });
+
+/* переход к мобильным якорям */
+for (let anchor of burgerAnchors) {
+    anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        anchor.className = 'burger-item-link burger-item-active';
+
+        const blockID = anchor.getAttribute('href').substr(1);
+
+        for (let index of burgerAnchors) {
+            if (index.getAttribute('href').substr(1) != blockID) {
+                index.className = 'burger-item-link';
+            }
+        }
+
+        document.getElementById(blockID).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }, false);
+}
 
 /* слайдер */
 let slider = document.getElementById('slider-container');
@@ -80,30 +153,37 @@ let slider = document.getElementById('slider-container');
 let slideLeft = document.createElement('div');
 slideLeft.className = 'slide-item';
 slideLeft.style.marginLeft = '-100%';
+let slideLeftItem = document.createElement('div');
+slideLeftItem.className = 'relative-slider-item';
 let slideImgLeft = document.createElement('img');
 slideImgLeft.className = 'slide-img';
 slideImgLeft.src = './assets/imgs/slide_2.png';
 slideImgLeft.alt = 'phone-img';
 slider.appendChild(slideLeft);
-slideLeft.appendChild(slideImgLeft);
+slideLeft.appendChild(slideLeftItem);
+slideLeftItem.appendChild(slideImgLeft);
 
 /* центральный блок */
 let slideCenter = document.createElement('div');
 slideCenter.className = 'slide-item';
 slideCenter.style.marginLeft = '0';
+let slideCenterItem = document.createElement('div');
+slideCenterItem.className = 'relative-slider-item';
+
 let slideImgCenter = document.createElement('img');
 slideImgCenter.className = 'slide-img';
 slideImgCenter.src = './assets/imgs/slide_1.png';
 slideImgCenter.alt = 'phone-img';
 slider.appendChild(slideCenter);
-slideCenter.appendChild(slideImgCenter);
+slideCenter.appendChild(slideCenterItem);
+slideCenterItem.appendChild(slideImgCenter);
 
 /* взаимодействие с вертикальным экраном */
 let blackBlockV = document.createElement('div');
 blackBlockV.innerHTML = ' ';
 blackBlockV.className = 'blackBlock';
 blackBlockV.id = 'blackBlockV';
-slideCenter.appendChild(blackBlockV);
+slideCenterItem.appendChild(blackBlockV);
 let clickBlockV = document.createElement('div');
 clickBlockV.innerHTML = ' ';
 clickBlockV.className = 'clickBlock';
@@ -117,14 +197,14 @@ clickBlockV.addEventListener('click', () => {
 
     flagBlockV = !flagBlockV;
 }, false);
-slideCenter.appendChild(clickBlockV);
+slideCenterItem.appendChild(clickBlockV);
 
 /* взаимодействие с горизонтальным экраном */
 let blackBlockH = document.createElement('div');
 blackBlockH.innerHTML = ' ';
 blackBlockH.className = 'blackBlock';
 blackBlockH.id = 'blackBlockH';
-slideCenter.appendChild(blackBlockH);
+slideCenterItem.appendChild(blackBlockH);
 let clickBlockH = document.createElement('div');
 clickBlockH.innerHTML = ' ';
 clickBlockH.className = 'clickBlock';
@@ -138,18 +218,21 @@ clickBlockH.addEventListener('click', () => {
 
     flagBlockH = !flagBlockH;
 }, false);
-slideCenter.appendChild(clickBlockH);
+slideCenterItem.appendChild(clickBlockH);
 
 /* правый скрытый блок */
 let slideRight = document.createElement('div');
 slideRight.className = 'slide-item';
 slideRight.style.marginLeft = '100%';
+let slideRightItem = document.createElement('div');
+slideRightItem.className = 'relative-slider-item';
 let slideImgRight = document.createElement('img');
 slideImgRight.className = 'slide-img';
 slideImgRight.src = './assets/imgs/slide_2.png';
 slideImgRight.alt = 'phone-img';
 slider.appendChild(slideRight);
-slideRight.appendChild(slideImgRight);
+slideRight.appendChild(slideRightItem);
+slideRightItem.appendChild(slideImgRight);
 
 /* стрелки слайдера */
 let arrowNext = document.getElementById('slider-arrow-next');
@@ -162,6 +245,8 @@ arrowNext.addEventListener("click", () => {
     let sliderItem = slider.childNodes;
     let slideNext = document.createElement('div');
     slideNext.className = 'slide-item';
+    let slideNextItem = document.createElement('div');
+    slideNextItem.className = 'relative-slider-item';
     let slideImgNext = document.createElement('img');
     slideImgNext.className = 'slide-img';
     slideImgNext.alt = 'phone-img';
@@ -179,9 +264,6 @@ arrowNext.addEventListener("click", () => {
         document.getElementById('clickBlockV').style.marginLeft = '-100%';
         document.getElementById('clickBlockH').style.marginLeft = '-100%';
 
-        let t = document.getElementById('clickBlockV');
-        t.style.marginLeft = '-100%';
-
         /* первый удаляется */
         sliderItem[0].remove();
 
@@ -190,14 +272,15 @@ arrowNext.addEventListener("click", () => {
         slideImgNext.src = './assets/imgs/slide_1.png';
 
         slider.appendChild(slideNext);
-        slideNext.appendChild(slideImgNext);
+        slideNext.appendChild(slideNextItem);
+        slideNextItem.appendChild(slideImgNext);
 
         /* к голубому цепляется интерактив */
         let blackBlockС = document.createElement('div');
         blackBlockС.innerHTML = ' ';
         blackBlockС.className = 'blackBlock';
         blackBlockС.id = 'blackBlockС';
-        sliderItem[1].appendChild(blackBlockС);
+        sliderItem[1].childNodes[0].appendChild(blackBlockС);
         let clickBlockС = document.createElement('div');
         clickBlockС.innerHTML = ' ';
         clickBlockС.className = 'clickBlock';
@@ -212,7 +295,7 @@ arrowNext.addEventListener("click", () => {
 
             flagBlockС = !flagBlockС;
         }, false);
-        sliderItem[1].appendChild(clickBlockС);
+        sliderItem[1].childNodes[0].appendChild(clickBlockС);
 
         /* голубой слайд */
     } else if (sliderBackground == 'rgb(100, 139, 240)') {
@@ -233,14 +316,15 @@ arrowNext.addEventListener("click", () => {
         slideImgNext.src = './assets/imgs/slide_2.png';
 
         slider.appendChild(slideNext);
-        slideNext.appendChild(slideImgNext);
+        slideNext.appendChild(slideNextItem);
+        slideNextItem.appendChild(slideImgNext);
 
         /* к центральному розовому цепляются блоки */
         let blackBlockV = document.createElement('div');
         blackBlockV.innerHTML = ' ';
         blackBlockV.className = 'blackBlock';
         blackBlockV.id = 'blackBlockV';
-        sliderItem[1].appendChild(blackBlockV);
+        sliderItem[1].childNodes[0].appendChild(blackBlockV);
         let clickBlockV = document.createElement('div');
         clickBlockV.innerHTML = ' ';
         clickBlockV.className = 'clickBlock';
@@ -256,13 +340,13 @@ arrowNext.addEventListener("click", () => {
 
             flagBlockV = !flagBlockV;
         }, false);
-        sliderItem[1].appendChild(clickBlockV);
+        sliderItem[1].childNodes[0].appendChild(clickBlockV);
 
         let blackBlockH = document.createElement('div');
         blackBlockH.innerHTML = ' ';
         blackBlockH.className = 'blackBlock';
         blackBlockH.id = 'blackBlockH';
-        sliderItem[1].appendChild(blackBlockH);
+        sliderItem[1].childNodes[0].appendChild(blackBlockH);
         let clickBlockH = document.createElement('div');
         clickBlockH.innerHTML = ' ';
         clickBlockH.className = 'clickBlock';
@@ -279,7 +363,7 @@ arrowNext.addEventListener("click", () => {
 
             flagBlockH = !flagBlockH;
         }, false);
-        sliderItem[1].appendChild(clickBlockH);
+        sliderItem[1].childNodes[0].appendChild(clickBlockH);
     }
 }, false);
 
@@ -290,6 +374,8 @@ arrowPrev.addEventListener("click", () => {
     let sliderItem = slider.childNodes;
     let slidePrev = document.createElement('div');
     slidePrev.className = 'slide-item';
+    let slidePrevItem = document.createElement('div');
+    slidePrevItem.className = 'relative-slider-item';
     let slideImgPrev = document.createElement('img');
     slideImgPrev.className = 'slide-img';
     slideImgPrev.alt = 'phone-img';
@@ -315,14 +401,15 @@ arrowPrev.addEventListener("click", () => {
         slideImgPrev.src = './assets/imgs/slide_1.png';
 
         slider.prepend(slidePrev);
-        slidePrev.appendChild(slideImgPrev);
+        slidePrev.appendChild(slidePrevItem);
+        slidePrevItem.appendChild(slideImgPrev);
 
         /* к голубому цепляется интерактив */
         let blackBlockС = document.createElement('div');
         blackBlockС.innerHTML = ' ';
         blackBlockС.className = 'blackBlock';
         blackBlockС.id = 'blackBlockС';
-        sliderItem[1].appendChild(blackBlockС);
+        sliderItem[1].childNodes[0].appendChild(blackBlockС);
         let clickBlockС = document.createElement('div');
         clickBlockС.innerHTML = ' ';
         clickBlockС.className = 'clickBlock';
@@ -337,7 +424,7 @@ arrowPrev.addEventListener("click", () => {
 
             flagBlockС = !flagBlockС;
         }, false);
-        sliderItem[1].appendChild(clickBlockС);
+        sliderItem[1].childNodes[0].appendChild(clickBlockС);
 
         /* голубой слайд */
     } else if (sliderBackground == 'rgb(100, 139, 240)') {
@@ -358,14 +445,15 @@ arrowPrev.addEventListener("click", () => {
         slideImgPrev.src = './assets/imgs/slide_2.png';
 
         slider.prepend(slidePrev);
-        slidePrev.appendChild(slideImgPrev);
+        slidePrev.appendChild(slidePrevItem);
+        slidePrevItem.appendChild(slideImgPrev);
 
         /* на средний слайд цепляются интерактивные блоки */
         let blackBlockV = document.createElement('div');
         blackBlockV.innerHTML = ' ';
         blackBlockV.className = 'blackBlock';
         blackBlockV.id = 'blackBlockV';
-        sliderItem[1].appendChild(blackBlockV);
+        sliderItem[1].childNodes[0].appendChild(blackBlockV);
         let clickBlockV = document.createElement('div');
         clickBlockV.innerHTML = ' ';
         clickBlockV.className = 'clickBlock';
@@ -381,13 +469,13 @@ arrowPrev.addEventListener("click", () => {
 
             flagBlockV = !flagBlockV;
         }, false);
-        sliderItem[1].appendChild(clickBlockV);
+        sliderItem[1].childNodes[0].appendChild(clickBlockV);
 
         let blackBlockH = document.createElement('div');
         blackBlockH.innerHTML = ' ';
         blackBlockH.className = 'blackBlock';
         blackBlockH.id = 'blackBlockH';
-        sliderItem[1].appendChild(blackBlockH);
+        sliderItem[1].childNodes[0].appendChild(blackBlockH);
         let clickBlockH = document.createElement('div');
         clickBlockH.innerHTML = ' ';
         clickBlockH.className = 'clickBlock';
@@ -404,7 +492,7 @@ arrowPrev.addEventListener("click", () => {
 
             flagBlockH = !flagBlockH;
         }, false);
-        sliderItem[1].appendChild(clickBlockH);
+        sliderItem[1].childNodes[0].appendChild(clickBlockH);
     }
 }, false);
 
@@ -575,3 +663,26 @@ function Validate(){
     }, false);
     messageBlock.appendChild(button);
 }
+
+
+let burger = document.getElementById('burger-menu');
+let burgerButton = document.getElementById('burger-button');
+
+burgerButton.addEventListener('click', () => {
+    let height = document.body.clientHeight;
+    console.log(height);
+    if(flagBurger) {
+        flagBurger = !flagBurger;
+
+        burgerButton.style.transform = 'rotate(90deg)';
+
+        burger.style.display = 'flex';
+        burger.style.height = height + 'px';
+    } else {
+        flagBurger = !flagBurger;
+
+        burgerButton.style.transform = 'rotate(0deg)';
+
+        burger.style.display = 'none';
+    }
+}, false);

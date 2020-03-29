@@ -259,10 +259,6 @@ arrowNext.addEventListener("click", () => {
         /* слайды уезжают вместе с розовыми блоками */
         sliderItem[1].style.marginLeft = '-100%';
         sliderItem[2].style.marginLeft = '0';
-        document.getElementById('blackBlockH').style.marginLeft = '-100%';
-        document.getElementById('blackBlockV').style.marginLeft = '-100%';
-        document.getElementById('clickBlockV').style.marginLeft = '-100%';
-        document.getElementById('clickBlockH').style.marginLeft = '-100%';
 
         /* первый удаляется */
         sliderItem[0].remove();
@@ -305,8 +301,6 @@ arrowNext.addEventListener("click", () => {
         /* слайды уезжают */
         sliderItem[1].style.marginLeft = '-100%';
         sliderItem[2].style.marginLeft = '0';
-        document.getElementById('blackBlockС').style.marginLeft = '-100%';
-        document.getElementById('clickBlockС').style.marginLeft = '-100%';
 
         /* первый удаляется */
         sliderItem[0].remove();
@@ -388,10 +382,6 @@ arrowPrev.addEventListener("click", () => {
         /* слайды уезжают вместе с блоками */
         sliderItem[0].style.marginLeft = '0';
         sliderItem[1].style.marginLeft = '100%';
-        document.getElementById('blackBlockH').style.marginLeft = '100%';
-        document.getElementById('blackBlockV').style.marginLeft = '100%';
-        document.getElementById('clickBlockV').style.marginLeft = '100%';
-        document.getElementById('clickBlockH').style.marginLeft = '100%';
 
         /* удаляется последний слайд */
         sliderItem[2].remove();
@@ -434,8 +424,6 @@ arrowPrev.addEventListener("click", () => {
         /* блоки уезжают */
         sliderItem[0].style.marginLeft = '0';
         sliderItem[1].style.marginLeft = '100%';
-        document.getElementById('blackBlockС').style.marginLeft = '100%';
-        document.getElementById('clickBlockС').style.marginLeft = '100%';
 
         /* последний удаляется */
         sliderItem[2].remove();

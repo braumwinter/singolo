@@ -1029,22 +1029,21 @@ a {
     #blackBlockV {
         width: 142px;
         height: 251px;
-        top: 84px;
+        top: 89px;
         left: 10px;
     }
 
     #blackBlockH {
         width: 252px;
-        height: 142px;
-
+        height: 143px;
         left: 280px;
-        top: 139px;
+        top: 142px;
     }
 
     #blackBlockС {
         width: 142px;
         height: 251px;
-        top: 85px;
+        top: 89px;
         left: 103px;
     }
 
@@ -1148,7 +1147,7 @@ a {
     }
 
     #blackBlockH {
-        width: 122px;
+        width: 124px;
         height: 71px;
         left: 136px;
         top: 70px;
@@ -1156,7 +1155,7 @@ a {
 
     #blackBlockС {
         width: 70px;
-        height: 122px;
+        height: 123px;
         top: 44px;
         left: 50px;
     }
